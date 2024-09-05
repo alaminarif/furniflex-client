@@ -7,6 +7,17 @@ export default {
   // eslint-disable-next-line no-undef
   plugins: [require("daisyui")],
   daisyui: {
-    themes: ["light"],
+    themes: [
+      {
+        mytheme: {
+          primary: "#1E99F5",
+          secondary: "#B92E2E",
+          accent: "#202020",
+          neutral: "#F6F5F2",
+          "base-100": "#ffffff",
+        },
+      },
+      "light",
+    ],
   },
 };

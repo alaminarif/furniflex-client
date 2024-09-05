@@ -15,14 +15,27 @@ const Navbar = () => {
               <Link to={"/"}>Home</Link>
             </li>
             <li>
-              <Link to={"/about"}>About</Link>
+              <Link to={"/produts"}>Produts</Link>
             </li>
+
             <li>
+              <Link to={"/categories"}>Categories</Link>
+            </li>
+
+            <li>
+              <Link to={"/custom"}>Cusmtom</Link>
+            </li>
+
+            <li>
+              <Link to={"/blog"}>Blog</Link>
+            </li>
+
+            {/* <li>
               <Link to={"/login"}>Login</Link>
             </li>
             <li>
               <Link to={"/dashboard"}>Dashboard</Link>
-            </li>
+            </li> */}
           </ul>
         </div>
         <a className="btn btn-ghost text-xl">daisyUI</a>
@@ -33,13 +46,19 @@ const Navbar = () => {
             <Link to={"/"}>Home</Link>
           </li>
           <li>
-            <Link to={"/about"}>About</Link>
+            <Link to={"/products"}>Produts</Link>
           </li>
+
           <li>
-            <Link to={"/login"}>Login</Link>
+            <Link to={"/categories"}>Categories</Link>
           </li>
+
           <li>
-            <Link to={"/dashboard"}>Dashboard</Link>
+            <Link to={"/custom"}>Cusmtom</Link>
+          </li>
+
+          <li>
+            <Link to={"/blog"}>Blog</Link>
           </li>
         </ul>
       </div>
