@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Products from "./Products";
 
 const Home = () => {
   return (
@@ -8,7 +9,9 @@ const Home = () => {
         <Link>Rocking chair</Link>
         <Link>Lounge chair</Link>
       </div>
-      <div className=" grid col-span-9 text-xl bg-secondary">Home page</div>
+      <div className=" grid col-span-9 text-xl bg-secondary">
+        <Products />
+      </div>
     </div>
   );
 };
