@@ -12,7 +12,7 @@ const Navbar = () => {
   const [signOut] = useSignOut(auth);
   const [cart] = userCart();
 
-  console.log(cart.length);
+  console.log(cart);
 
   const handleLogout = async () => {
     await signOut();
@@ -100,11 +100,11 @@ const Navbar = () => {
             </div> */}
 
             <div className="navbar-end flex gap-4">
-              <div className="flex text-2xl">
+              <Link to="/carts" className="flex text-2xl">
                 {" "}
                 <IoCartOutline />
                 <div className="badge bagde-primary">{cart.length}</div>
-              </div>
+              </Link>
               <div className=" dropdown dropdown-end ">
                 <div className=" text-neutral-content rounded-full w-8" tabIndex={0}>
                   <img src={user.photoURL ? user.photoURL : ProfileLogin} className="w-12 rounded-full" alt="" />

@@ -38,7 +38,7 @@ const SingleProductCard = ({ product }) => {
 
       const cartItem = {
         productId: _id,
-        emai: user.email,
+        email: user.email,
         name,
         img,
         price,
@@ -47,6 +47,7 @@ const SingleProductCard = ({ product }) => {
       axios.post("http://localhost:5000/carts/create-cart", cartItem).then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {
+          refetch();
           toast.success("added to your cart");
         }
       });
@@ -63,7 +64,6 @@ const SingleProductCard = ({ product }) => {
         if (result.isConfirmed) {
           //
           navigate("/login", { state: { from: location } });
-          refetch();
         }
       });
     }

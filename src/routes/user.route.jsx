@@ -2,7 +2,7 @@ import Dashboard from "../pages/Dashboard";
 
 export const userPaths = [
   {
-    path: "",
+    path: "home",
     element: <Dashboard />,
   },
 ];
