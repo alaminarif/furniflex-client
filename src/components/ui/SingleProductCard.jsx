@@ -1,13 +1,15 @@
 /* eslint-disable react/prop-types */
+import { useAuthState } from "react-firebase-hooks/auth";
 import { IoCartOutline } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { auth } from "../../lib/firebase.config";
+import Swal from "sweetalert2";
 
 // eslint-disable-next-line react/prop-types
 const SingleProductCard = ({ product }) => {
   // const token = localStorage.getItem("token");
+  const [user] = useAuthState(auth);
 
-  const { _id, name, price, description, discount, discountOff, img } = product;
-  console.log(_id);
+  const { name, price, description, discount, discountOff, img } = product;
 
   // const handleDelete = async () => {
   //   await fetch(`http://localhost:5000/products/${_id}`, {
@@ -23,9 +25,29 @@ const SingleProductCard = ({ product }) => {
   //       refetch();
   //     });
   // };
+  const handleAddToCard = (product) => {
+    if (user && user.email) {
+      //
+    } else {
+      Swal.fire({
+        title: "Your are not Logged In",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, Login",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          //
+        }
+      });
+    }
+    console.log(product);
+  };
 
   return (
-    <div className="card w-96 bg-base-100 shadow-xl">
+    <div className="card w-[277px] h-[484px] shadow-sm">
       <figure>
         <img src={img} alt="products" />
       </figure>
@@ -36,15 +58,15 @@ const SingleProductCard = ({ product }) => {
         </p>
         <p>{description}</p>
         <div className="card-actions justify-end">
-          <button className="btn w-full bg-accent text-white">
-            <Link to={`/products/${_id}`} className="flex">
+          <button onClick={() => handleAddToCard(product)} className="btn w-full bg-accent text-white">
+            <div className="flex">
               {" "}
               <span className="mr-2">
                 {" "}
                 <IoCartOutline />
               </span>
               <span>Add to Cart</span>
-            </Link>
+            </div>
           </button>
         </div>
       </div>

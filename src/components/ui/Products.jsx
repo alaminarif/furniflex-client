@@ -1,16 +1,15 @@
-import { useState } from "react";
+// import { useState } from "react";
 
-import SingleProductCard from "../components/ui/SingleProductCard";
-import LoadingSpinner from "../components/shared/LoadingSpinner";
 import { useQuery } from "react-query";
+import SingleProductCard from "./SingleProductCard";
+import LoadingSpinner from "../shared/LoadingSpinner";
 
 const Products = () => {
   // const [products, setProducts] = useState([]);
-  const [search] = useState("");
 
   //custom hooks for effitient search
 
-  const url = `http://localhost:5000/products?search=${search}`;
+  const url = `http://localhost:5000/products`;
   const { data: products, isPending, refetch } = useQuery({ queryKey: ["products"], queryFn: () => fetch(url).then((res) => res.json()) });
 
   // useEffect(() => {

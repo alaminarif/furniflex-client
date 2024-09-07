@@ -97,9 +97,10 @@ const Navbar = () => {
             </div> */}
 
             <div className="navbar-end flex gap-4">
-              <div className="text-2xl">
+              <div className="flex text-2xl">
                 {" "}
                 <IoCartOutline />
+                <div className="badge bagde-primary">1</div>
               </div>
               <div className=" dropdown dropdown-end ">
                 <div className=" text-neutral-content rounded-full w-8" tabIndex={0}>
