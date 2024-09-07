@@ -5,6 +5,8 @@ import { useAuthState, useSignInWithEmailAndPassword } from "react-firebase-hook
 import GoogleLogin from "../components/auth/GoogleLogin";
 import { auth } from "../lib/firebase.config";
 
+import loginImage from "../assets/login.png";
+
 export default function Login() {
   const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
 
@@ -27,7 +29,7 @@ export default function Login() {
           email: data?.user?.email,
           name: data?.user?.displayName,
         };
-        fetch("http://localhost:5000/users", {
+        fetch("https://furniflex-server.onrender.com/users", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -59,15 +61,7 @@ export default function Login() {
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content grid lg:grid-cols-2">
-        <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold">Login now!</h1>
-          <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a
-            id nisi.
-          </p>
-          <img src="" alt="" />
-        </div>
-        <div className="flex justify-end">
+        <div className="flex justify-center">
           <div className="card shrink-0 w-full max-w-md shadow-2xl bg-base-100">
             <form onSubmit={handleSubmit} className="card-body">
               <div className="form-control">
@@ -106,6 +100,7 @@ export default function Login() {
             </div>
           </div>
         </div>
+        <div className="bg-[url('../assets/login.png')]">{/* <img src={loginImage} alt="" /> */}</div>
       </div>
     </div>
   );

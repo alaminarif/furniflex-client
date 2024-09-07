@@ -8,12 +8,12 @@ const Products = () => {
 
   //custom hooks for effitient search
 
-  const url = `http://localhost:5000/products`;
+  const url = `https://furniflex-server.onrender.com/products`;
   const { data: products, isPending, refetch } = useQuery({ queryKey: ["products"], queryFn: () => fetch(url).then((res) => res.json()) });
 
   // useEffect(() => {
   //   // Fetch products based on the search query
-  //   fetch(`http://localhost:5000/products?search=${search}`)
+  //   fetch(`https://furniflex-server.onrender.com/products?search=${search}`)
   //     .then((res) => res.json())
   //     .then((data) => setProducts(data));
   // }, [search]);

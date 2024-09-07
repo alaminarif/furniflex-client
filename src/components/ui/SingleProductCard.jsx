@@ -19,7 +19,7 @@ const SingleProductCard = ({ product }) => {
   const { _id, name, price, description, discount, discountOff, img } = product;
 
   // const handleDelete = async () => {
-  //   await fetch(`http://localhost:5000/products/${_id}`, {
+  //   await fetch(`https://furniflex-server.onrender.com/products/${_id}`, {
   //     method: "DELETE",
   //     headers: {
   //       "Content-type": "application/json",
@@ -44,7 +44,7 @@ const SingleProductCard = ({ product }) => {
         price,
       };
 
-      axios.post("http://localhost:5000/carts/create-cart", cartItem).then((res) => {
+      axios.post("https://furniflex-server.onrender.com/carts/create-cart", cartItem).then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {
           refetch();

@@ -29,7 +29,7 @@ export default function Register() {
 
         console.log(userInfo);
 
-        fetch("http://localhost:5000/users", {
+        fetch("https://furniflex-server.onrender.com/users", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

@@ -6,13 +6,17 @@ import { auth } from "../lib/firebase.config";
 
 const userCart = () => {
   const [user] = useAuthState(auth);
-  const { data: cart = [], refetch } = useQuery({
+  const {
+    data: cart = [],
+    refetch,
+    isPending,
+  } = useQuery({
     queryKey: ["cart", user?.email],
     queryFn: async () => {
-      const res = await axios.get(`http://localhost:5000/carts?email=${user?.email} `);
+      const res = await axios.get(`https://furniflex-server.onrender.com/carts?email=${user?.email} `);
       return res.data;
     },
   });
-  return [cart, refetch];
+  return [cart, refetch, isPending];
 };
 export default userCart;
