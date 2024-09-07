@@ -3,13 +3,20 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { IoCartOutline } from "react-icons/io5";
 import { auth } from "../../lib/firebase.config";
 import Swal from "sweetalert2";
+import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
+import toast from "react-hot-toast";
+import userCart from "../../hooks/userCart";
 
 // eslint-disable-next-line react/prop-types
 const SingleProductCard = ({ product }) => {
   // const token = localStorage.getItem("token");
   const [user] = useAuthState(auth);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [, refetch] = userCart();
 
-  const { name, price, description, discount, discountOff, img } = product;
+  const { _id, name, price, description, discount, discountOff, img } = product;
 
   // const handleDelete = async () => {
   //   await fetch(`http://localhost:5000/products/${_id}`, {
@@ -25,9 +32,24 @@ const SingleProductCard = ({ product }) => {
   //       refetch();
   //     });
   // };
-  const handleAddToCard = (product) => {
+  const handleAddToCard = () => {
     if (user && user.email) {
       //
+
+      const cartItem = {
+        productId: _id,
+        emai: user.email,
+        name,
+        img,
+        price,
+      };
+
+      axios.post("http://localhost:5000/carts/create-cart", cartItem).then((res) => {
+        console.log(res.data);
+        if (res.data.insertedId) {
+          toast.success("added to your cart");
+        }
+      });
     } else {
       Swal.fire({
         title: "Your are not Logged In",
@@ -40,10 +62,11 @@ const SingleProductCard = ({ product }) => {
       }).then((result) => {
         if (result.isConfirmed) {
           //
+          navigate("/login", { state: { from: location } });
+          refetch();
         }
       });
     }
-    console.log(product);
   };
 
   return (
@@ -58,7 +81,7 @@ const SingleProductCard = ({ product }) => {
         </p>
         <p>{description}</p>
         <div className="card-actions justify-end">
-          <button onClick={() => handleAddToCard(product)} className="btn w-full bg-accent text-white">
+          <button onClick={handleAddToCard} className="btn w-full bg-accent text-white">
             <div className="flex">
               {" "}
               <span className="mr-2">

@@ -1,8 +1,7 @@
 // import { useState } from "react";
-
-import { useQuery } from "react-query";
 import SingleProductCard from "./SingleProductCard";
 import LoadingSpinner from "../shared/LoadingSpinner";
+import { useQuery } from "@tanstack/react-query";
 
 const Products = () => {
   // const [products, setProducts] = useState([]);

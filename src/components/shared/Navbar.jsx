@@ -5,17 +5,20 @@ import logo from "../../assets/logo.png";
 import ProfileLogin from "../../assets/profile-login.png";
 
 import { IoCartOutline } from "react-icons/io5";
+import userCart from "../../hooks/userCart";
 
 const Navbar = () => {
   const [user] = useAuthState(auth);
   const [signOut] = useSignOut(auth);
+  const [cart] = userCart();
 
-  console.log(user?.email);
+  console.log(cart.length);
 
   const handleLogout = async () => {
     await signOut();
     localStorage.removeItem("token");
   };
+
   return (
     <div className="navbar bg-base-100 max-w-[1200px] mx-auto">
       <div className="navbar-start">
@@ -100,7 +103,7 @@ const Navbar = () => {
               <div className="flex text-2xl">
                 {" "}
                 <IoCartOutline />
-                <div className="badge bagde-primary">1</div>
+                <div className="badge bagde-primary">{cart.length}</div>
               </div>
               <div className=" dropdown dropdown-end ">
                 <div className=" text-neutral-content rounded-full w-8" tabIndex={0}>
