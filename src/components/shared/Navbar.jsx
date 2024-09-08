@@ -74,7 +74,7 @@ const Navbar = () => {
           </li>
 
           <li>
-            <Link to={"/custom"}>Cusmtom</Link>
+            <Link to={"/custom"}>Custom</Link>
           </li>
 
           <li>

@@ -6,6 +6,7 @@ import GoogleLogin from "../components/auth/GoogleLogin";
 import { auth } from "../lib/firebase.config";
 
 import loginImage from "../assets/login.png";
+import loginLogo from "../assets/login-logo.png";
 
 export default function Login() {
   const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
@@ -57,9 +58,89 @@ export default function Login() {
   if (loading) {
     return <p>Loading...</p>;
   }
-
   return (
-    <div className="hero min-h-screen bg-base-200">
+    <div className="min-h-screen">
+      <div className="grid lg:grid-cols-2">
+        <div className="flex justify-center  h-screen items-center">
+          <form onSubmit={handleSubmit} className="bg-neutral p-4 rounded-sm w-9/12">
+            <h1 className="text-2xl font-bold mt-10"> Welcome Back!</h1>
+            <p className="mb-4">Enter your Credentials to access your account</p>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Email</span>
+              </label>
+              <input type="email" placeholder="email" name="email" className="input input-bordered" required />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Password</span>
+              </label>
+              <input type="password" placeholder="password" name="password" className="input input-bordered" required />
+              <label className="label fle justify-end">
+                <a href="#" onClick={handleForgetPassword} className="label-text-alt link link-hover">
+                  Forgot password?
+                </a>
+              </label>
+            </div>
+
+            <div className="form-control">
+              <label className="label cursor-pointer  justify-start">
+                <input type="checkbox" defaultChecked className="checkbox checkbox-primary" />
+                <span className="label-text ml-3">I agree to the Terms & Policy</span>
+              </label>
+            </div>
+
+            <div className="form-control mt-6 m-4">
+              <input className="btn btn-accent" type="submit" value="Login" />
+            </div>
+
+            <div className="flex w-full flex-col">
+              <div className="divider">or </div>
+            </div>
+
+            <div className=" ">
+              <div className="flex flex-col gap-2 mx-7 mb-7">
+                <GoogleLogin />
+
+                {/* <button className="btn btn-outline">FacebookLogin</button> */}
+              </div>
+            </div>
+
+            <p className="text-center">
+              Don&apos;t have any account ?{" "}
+              <Link to={"/register"} className="text-primary">
+                Register
+              </Link>
+            </p>
+          </form>
+        </div>
+
+        <div
+          className="bg-no-repeat bg-cover bg-center h-screen "
+          style={{
+            background: `url(${loginImage})`,
+          }}
+        >
+          <div className=" flex flex-col items-center justify-center h-screen">
+            <div className="">
+              <img src={loginLogo} alt="" />
+            </div>
+
+            <div className="">
+              <p className=" text-primary mx-auto w-8/12">
+                Discover a seamless shopping experience with our curated collection of products. From fashion to electronics, we bring quality.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/*
+return (
+    <div className="hero min-h-screen">
       <div className="hero-content grid lg:grid-cols-2">
         <div className="flex justify-center">
           <div className="card shrink-0 w-full max-w-md shadow-2xl bg-base-100">
@@ -95,13 +176,32 @@ export default function Login() {
             <div className="  w-full ">
               <div className="flex flex-col gap-2 mx-7 mb-7">
                 <GoogleLogin />
-                {/* <FacebookLogin /> */}
-              </div>
+                {/* <FacebookLogin /> 
+  //             </div>
+  //           </div>
+  //         </div>
+  //       </div>
+
+        <div
+          className="bg-no-repeat bg-cover bg-center h-screen "
+          style={{
+            background: `url(${loginImage})`,
+          }}
+        >
+          <div className=" grid place-content-center">
+            <div className="">
+              <img src={loginLogo} alt="" />
+            </div>
+
+            <div className="">
+              <p className=" text-primary w-48">
+                Discover a seamless shopping experience with our curated collection of products. From fashion to electronics, we bring quality.
+              </p>
             </div>
           </div>
         </div>
-        <div className="bg-[url('../assets/login.png')]">{/* <img src={loginImage} alt="" /> */}</div>
       </div>
-    </div>
-  );
-}
+  //   </div>
+  // );
+
+*/

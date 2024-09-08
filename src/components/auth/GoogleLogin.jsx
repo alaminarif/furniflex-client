@@ -30,7 +30,7 @@ export default function GoogleLogin() {
 
   return (
     <div>
-      <button onClick={handleGoogleLoging} className=" px-5 py-3 bg-yellow-500 text-white w-full rounded-lg">
+      <button onClick={handleGoogleLoging} className="btn btn-outline  w-full  rounded-lg">
         Google Login
       </button>
     </div>
