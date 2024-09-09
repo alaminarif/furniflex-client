@@ -15,7 +15,7 @@ export default function Register() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
-    const name = form.name.value;
+    const name = form.firstName.value;
     const email = form.email.value;
     const password = form.password.value;
 
@@ -75,14 +75,14 @@ export default function Register() {
                 <label className="label">
                   <span className="label-text">Last Name</span>
                 </label>
-                <input type="email" placeholder="Last Name" name="lastName" className="input input-bordered" required />
+                <input type="text" placeholder="Last Name" name="lastName" className="input input-bordered" required />
               </div>
             </div>
 
             <div className="form-control w-full">
               {" "}
               <label className="label">
-                <span className="label-text">Name</span>{" "}
+                <span className="label-text">Email</span>{" "}
               </label>
               <input type="email" placeholder="email" className="input input-bordered" name="email" required />{" "}
             </div>

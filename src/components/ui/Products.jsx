@@ -11,13 +11,6 @@ const Products = () => {
   const url = `https://furniflex-server.onrender.com/products`;
   const { data: products, isPending, refetch } = useQuery({ queryKey: ["products"], queryFn: () => fetch(url).then((res) => res.json()) });
 
-  // useEffect(() => {
-  //   // Fetch products based on the search query
-  //   fetch(`https://furniflex-server.onrender.com/products?search=${search}`)
-  //     .then((res) => res.json())
-  //     .then((data) => setProducts(data));
-  // }, [search]);
-
   if (isPending) {
     return <LoadingSpinner />;
   }

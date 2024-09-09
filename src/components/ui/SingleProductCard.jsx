@@ -18,20 +18,6 @@ const SingleProductCard = ({ product }) => {
 
   const { _id, name, price, description, discount, discountOff, img } = product;
 
-  // const handleDelete = async () => {
-  //   await fetch(`https://furniflex-server.onrender.com/products/${_id}`, {
-  //     method: "DELETE",
-  //     headers: {
-  //       "Content-type": "application/json",
-  //       authorization: `Bearer ${token}`,
-  //     },
-  //   })
-  //     .then((res) => res.json())
-  //     .then(() => {
-  //       toast.success("Product Deleted");
-  //       refetch();
-  //     });
-  // };
   const handleAddToCard = () => {
     if (user && user.email) {
       //

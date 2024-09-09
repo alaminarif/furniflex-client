@@ -3,7 +3,7 @@ import LoadingSpinner from "../shared/LoadingSpinner";
 import SingleCart from "./SingleCart";
 
 const Carts = () => {
-  const [cart, , isPending] = userCart();
+  const [cart, refetch, isPending] = userCart();
 
   if (isPending) {
     return <LoadingSpinner />;
@@ -15,7 +15,7 @@ const Carts = () => {
         <div className=" col-span-9 ">
           <h1 className="text-2xl font-bold my-7">An overview of your order</h1>
           {cart?.map((item) => (
-            <SingleCart key={item._id} item={item}></SingleCart>
+            <SingleCart key={item._id} item={item} refetch={refetch}></SingleCart>
           ))}
         </div>
         <div className="col-span-3  min-h-full">

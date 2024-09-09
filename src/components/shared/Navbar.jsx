@@ -111,7 +111,7 @@ const Navbar = () => {
                   {/* <span>{user?.displayName ? user.displayName.slice(0, 2) : "a"}</span> */}
                 </div>
 
-                <div tabIndex={0} className="dropdown-content z-[1] card card-compact w-64 p-2 shadow text-primary bg-secondary">
+                <div tabIndex={0} className="dropdown-content z-[1] card card-compact w-64 p-2 shadow text-primary bg-neutral">
                   <div className="card-body ">
                     <span className="text-black mx-auto">accounts</span>
                     <hr />
