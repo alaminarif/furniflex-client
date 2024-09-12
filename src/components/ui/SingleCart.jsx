@@ -17,11 +17,17 @@ const SingleCart = ({ item, refetch }) => {
         refetch();
       });
   };
+
+  const handleAddCart = () => {
+    console.log("first");
+  };
   return (
     <div>
       <div className=" shadow-sm flex mb-4 p-3 rounded-lg bg-neutral">
         <div className="">
-          <span className="text-3xl font-bold">-</span>
+          <span onClick={handleAddCart} className="text-3xl font-bold">
+            -
+          </span>
           <span className="mx-2">1</span>
           <span className="text-3xl font-bold">+</span>
         </div>
