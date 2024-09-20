@@ -20,7 +20,6 @@ const Products = () => {
 
   return (
     <div>
-      01
       <div className="my-16 flex flex-wrap gap-4">
         {products?.map((product) => (
           <SingleProductCard key={product._id} product={product} refetch={refetch} />
