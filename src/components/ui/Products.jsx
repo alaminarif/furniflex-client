@@ -4,10 +4,6 @@ import LoadingSpinner from "../shared/LoadingSpinner";
 import { useQuery } from "@tanstack/react-query";
 
 const Products = () => {
-  // const [products, setProducts] = useState([]);
-
-  //custom hooks for effitient search
-
   const url = `https://furniflex-server.onrender.com/products`;
   const { data: products, isPending, refetch } = useQuery({ queryKey: ["products"], queryFn: () => fetch(url).then((res) => res.json()) });
 
