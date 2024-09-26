@@ -20,6 +20,7 @@ const CreateProduct = () => {
 
     const name = e.target.name.value;
     const file = new FormData();
+    console.log(name);
 
     file.append("file", imgFile);
     file.append("upload_preset", "heroclub");
@@ -31,14 +32,17 @@ const CreateProduct = () => {
         .then((data) => setProducts(data));
     }
   };
+
   return (
     <div>
       <h1 className="">Create Product</h1>
-      <form onSubmit={handleSubmit} className="w-6/12 mx-auto">
-        <label className="input input-bordered  flex items-center gap-2">
-          Name
-          <input type="text" className="grow" placeholder="Daisy" name="name" />
-        </label>
+      <form onSubmit={handleSubmit} className="mx-auto">
+        <div className="form-control w-full mb-4">
+          <label className="label">
+            <span className="label-text">Last Name</span>
+          </label>
+          <input type="text" placeholder="Name" name="name" className="input input-bordered" required />
+        </div>
 
         <div>
           <label className="text-md uppercase" htmlFor="">
@@ -46,7 +50,7 @@ const CreateProduct = () => {
           </label>
           <br />
           <input
-            className="w-full h-14 mt-2 file-input"
+            className="w-full file-input"
             type="file"
             required
             id="file"
@@ -55,7 +59,7 @@ const CreateProduct = () => {
             onChange={(e) => setImgFile(e.target.files[0])}
           />
         </div>
-        <button type="submit" className="btn bg-white uppercase w-full py-3 mt-2 text-[#000944] rounded-md ">
+        <button type="submit" className="btn bg-white uppercase w-full py-3 mt-4 text-[#000944] rounded-md ">
           Submit
         </button>
       </form>
